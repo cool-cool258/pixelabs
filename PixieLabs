@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixeLabs — Color, Motion, Impact</title>
+  <style>@font-face{font-family:'Jokerman';}</style>
+  <style>
+    /* ===== RESET ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ===== COLOR SYSTEM ===== */
+    :root {
+      --bg: #FFE0CC;          /* light peach */
+      --ink: #141414;
+      --accent: #ff4d6d;
+      --accent-2: #4d9cff;
+      --accent-3: #f7c948;
+      --card: #ffffff;
+    }
+
+    body {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    section { padding: 6rem 8vw; }
+    h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
+    p { max-width: 720px; }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      border: none;
+      transition: transform .3s ease, box-shadow .3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.18);
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      padding: 1.2rem 8vw;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(255,248,241,.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+    nav strong {
+      font-family: 'Jokerman', 'Comic Sans MS', cursive;
+      font-size: 2.8rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+    nav ul { display: flex; gap: 2rem; list-style: none; }
+    nav li { font-size: 0.85rem; opacity: .7; }
+    nav li:hover { opacity: 1; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero h1 { font-size: clamp(3rem, 5vw, 4.5rem); margin-bottom: 1.2rem; }
+    .hero span { color: var(--accent); }
+    .hero-image {
+      height: 72vh;
+      border-radius: 32px;
+      background-image: url('images/hero-artwork.jpg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 30px 80px rgba(0,0,0,.25);
+    }
+
+    /* ===== STATS ===== */
+    .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-bottom: 4rem; }
+    .stat {
+      padding: 2rem;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #fff, #fff0);
+      box-shadow: 0 10px 40px rgba(0,0,0,.08);
+    }
+    .stat h2 { font-size: 2.6rem; color: var(--accent-2); }
+
+    /* ===== ABOUT ===== */
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .about-image {
+      height: 440px;
+      border-radius: 32px;
+      background-image: url('images/about-team.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    ul.values { list-style: none; margin-top: 2rem; }
+    ul.values li { margin-bottom: .6rem; }
+
+    /* ===== SERVICES ===== */
+    #services { margin-top: 0; padding-top: 4rem; }
+    .services { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+    .service-card {
+      padding: 2.5rem;
+      border-radius: 28px;
+      background: var(--card);
+      box-shadow: 0 20px 60px rgba(0,0,0,.12);
+      transition: transform .3s ease;
+    }
+    .service-card:hover { transform: translateY(-8px); }
+
+    /* ===== PORTFOLIO ===== */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    .project {
+      height: 340px;
+      border-radius: 28px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+      font-weight: 600;
+      color: white;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .p1 { background-image: url('images/project1.jpg'); }
+    .p2 { background-image: url('images/project2.jpg'); }
+    .p3 { background-image: url('images/project3.jpg'); }
+    .p4 { background-image: url('images/project4.jpg'); }
+    .p5 { background-image: url('images/project5.jpg'); }
+    .p6 { background-image: url('images/project6.jpg'); }
+
+    /* ===== CONTACT ===== */
+    form { display: grid; gap: 1.4rem; max-width: 520px; margin-top: 2rem; }
+    input, textarea {
+      background: #ffffff;
+      padding: .9rem 1rem;
+      border-radius: 14px;
+      border: 2px solid #eee;
+      font-family: inherit;
+    }
+    #contact p { margin-top: 2rem; }
+
+    footer {
+      padding: 3rem 8vw;
+      font-size: .8rem;
+      opacity: .6;
+    }
+
+    @media (max-width: 900px) {
+      .hero, .about, .services { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <strong>PixeLabs</strong>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div>
+    <h1>Transform Your Brand <span>Visually</span></h1>
+    <p>Custom Logos • Social Graphics • Digital Art</p>
+    <p>PixeLabs creates expressive, high-impact visuals that feel alive and unforgettable.</p>
+    <div style="margin-top:2rem"><a class="btn" href="#contact">Start Your Project</a></div>
+  </div>
+  <div class="hero-image"></div>
+</section>
+
+<section class="stats">
+  <div class="stat"><h2>500+</h2><p>Projects Delivered</p></div>
+  <div class="stat"><h2>98%</h2><p>Client Satisfaction</p></div>
+  <div class="stat"><h2>24/7</h2><p>Creative Support</p></div>
+</section>
+
+<section class="about" id="about">
+  <div>
+    <h2>About PixeLabs</h2>
+    <p>PixeLabs is a creative studio focused on color, identity, and visual storytelling. Every design is tailored, expressive, and built to stand out.</p>
+    <ul class="values">
+      <li>• High-quality, personalized designs</li>
+      <li>• Fast turnaround</li>
+      <li>• Collaborative workflow</li>
+      <li>• Trend-forward visuals</li>
+    </ul>
+  </div>
+  <div class="about-image"></div>
+</section>
+
+<section id="services">
+  <h2>My Services</h2>
+  <div class="services">
+    <div class="service-card"><h3>Logo Design</h3><p>Bold identities that feel intentional and alive.</p></div>
+    <div class="service-card"><h3>Social Media Graphics</h3><p>Visuals that stop the scroll.</p></div>
+    <div class="service-card"><h3>Digital Art</h3><p>Artwork with emotion and edge.</p></div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <h2>Portfolio Showcase</h2>
+  <div class="portfolio-grid">
+    <div class="project p1">Modern Tech Brand</div>
+    <div class="project p2">Social Campaign</div>
+    <div class="project p3">Restaurant Identity</div>
+    <div class="project p4">Digital Art Series</div>
+    <div class="project p5">Fashion Refresh</div>
+    <div class="project p6">Event Kit</div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Get in Touch</h2>
+  <form>
+    <input type="text" placeholder="Your name" />
+    <input type="email" placeholder="you@example.com" />
+    <textarea placeholder="Tell us more..."></textarea>
+    <button class="btn">Send Message</button>
+  </form>
+  <p>
+    <strong>Email:</strong> whitneyliam675@gmail.com<br>
+    <strong>Office Hours:</strong><br>
+    Sun–Thurs: 3pm–11pm GMT<br>
+    Fri & Sat: 9am–8pm GMT
+  </p>
+</section>
+
+<footer>
+  <p>© 2025 PixeLabs. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
